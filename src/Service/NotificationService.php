@@ -9,11 +9,13 @@
 namespace App\Service;
 
 
+use App\Entity\MailerProvider;
+
 class NotificationService
 {
     private $provider;
 
-    public function __construct(MailProvider $provider)
+    public function __construct(MailerProvider $provider)
     {
         $this->provider=$provider;
     }
