@@ -12,6 +12,7 @@ namespace App\Command;
 use App\Service\NotificationService;
 use App\Service\SesProvider;
 use App\Entity\User;
+use App\Service\UtilService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,11 +21,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SendNotificationCommand extends Command
 {
     private $notificationService;
+    private $utilService;
 
-    public function __construct(SesProvider $sesProvider)
+    public function __construct(SesProvider $sesProvider,UtilService $utilService)
     {
         $this->notificationService = new NotificationService($sesProvider);
-
+        $this->utilService=$utilService;
         parent::__construct();
     }
     protected function configure()
@@ -35,7 +37,7 @@ class SendNotificationCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $message="prueba";
+        $message=$this->utilService->randomWords();
         $user=new User(1,"John","john@gmail.com");
         $notify=$this->notificationService->notify($user,$message);
         $arrayJson=array('id'=>$input->getArgument('idUser'),'email'=>$user->email,'message'=>$message,'result'=>$notify);
