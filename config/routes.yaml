@@ -1,3 +1,6 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+sendNotification:
+  path: /users/send_notification/{id}
+  controller : App\Controller\NotificationController::sendNotification

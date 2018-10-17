@@ -8,8 +8,6 @@
 
 namespace App\Service;
 
-
-use App\Entity\MailerProvider;
 use App\Entity\User;
 
 class NotificationService
@@ -22,6 +20,6 @@ class NotificationService
     }
 
     public function notify(User $user,$message){
-        $this->provider->send($user->getEmail,$message);
+        return $this->provider->send($user->email,$message);
     }
 }

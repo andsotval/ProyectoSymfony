@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: Andres
  * Date: 17/10/2018
- * Time: 18:00
+ * Time: 18:01
  */
 
-namespace App\Entity;
+namespace App\Service;
 
 
-class SmtpProvider implements MailerProvider
+class SesProvider implements MailerProvider
 {
     public function send($email,$message){
         return true;

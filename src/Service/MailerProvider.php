@@ -6,7 +6,7 @@
  * Time: 17:56
  */
 
-namespace App\Entity;
+namespace App\Service;
 
 
 interface MailerProvider
